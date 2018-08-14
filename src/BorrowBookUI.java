@@ -47,13 +47,15 @@ public class BorrowBookUI {
 
 				
 			case READY:
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
+				String memberCardCancel = input("Swipe member card (press <enter> to cancel): ");// change the memStr to the memberCardCancel for avoid 
+                                // the conflict with the namming conflict.@ tharindu
+				if (memberCardCancel.length() == 0) {// change the memStr to the memberCardCancel for avoid 
+                                // the conflict with the namming conflict.@ tharindu
 					control.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
+					int memberId = Integer.valueOf(memberCardCancel).intValue();
 					control.Swiped(memberId);
 				}
 				catch (NumberFormatException e) {
@@ -69,13 +71,16 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				String bookComplete = input("Scan Book (<enter> completes): ");// change the bookStr to the bookComplete for avoid 
+                                // the conflict with the namming conflict.@ tharindu
+				if (bookComplete.length() == 0) {// change the bookStr to the bookComplete for avoid 
+                                // the conflict with the namming conflict.@ tharindu
 					control.Complete();
 					break;
 				}
 				try {
-					int bookId = Integer.valueOf(bookStr).intValue();
+					int bookId = Integer.valueOf(bookComplete).intValue();// change the bookStr to the bookComplete for avoid 
+                                // the conflict with the namming conflict.@ tharindu
 					control.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
@@ -85,8 +90,10 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String ans = input("Commit loans? (Y/N): ");
-				if (ans.toUpperCase().equals("N")) {
+				String answerForQA = input("Commit loans? (Y/N): ");// change the ans to the answerForQA for avoid 
+                                // the conflict with the namming conflict.@ tharindu
+				if (answerForQA.toUpperCase().equals("N")) {// change the ans to the answerForQA for avoid 
+                                // the conflict with the namming conflict.@ tharindu
 					control.cancel();
 					
 				} else {
@@ -109,7 +116,8 @@ public class BorrowBookUI {
 	}
 
 
-	public void display(Object object) {
+	public void displayDetails(Object object) {// change the display to the displayDetails for avoid 
+                                // the conflict with the namming conflict.@ tharindu
 		output(object);		
 	}
 
