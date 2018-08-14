@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 
+// i have change the naming conflict of the code.
+
 public class BorrowBookUI {
 	
 	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
