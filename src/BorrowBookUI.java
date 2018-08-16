@@ -7,7 +7,7 @@ public class BorrowBookUI {
 	
 	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
-	private BorrowBookControl control;
+	private BorrowBookControl control;// chnage the spaces and commas for the finalize the code.
 	private Scanner input;
 	private UI_STATE state;
 
