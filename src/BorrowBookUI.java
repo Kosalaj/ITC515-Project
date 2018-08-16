@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-// i have change the naming conflict of the code.
+// i have change the naming conflict of the code. And chaneg the method name.
 
 public class BorrowBookUI {
 	
