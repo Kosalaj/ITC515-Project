@@ -9,22 +9,22 @@ public class PayFineUI {
 	* @date   2018-08-18 
 	*/
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UISTATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 
 	private PayFineControl control;
 	private Scanner input;
-	private UI_STATE state;
+	private UISTATE state;
 
 	
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		state = UISTATE.INITIALISED;
 		control.setUI(this);
 	}
 	
 	
-	public void setState(UI_STATE state) {
+	public void setState(UISTATE state) {
 		this.state = state;
 	}
 
