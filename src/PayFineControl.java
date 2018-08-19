@@ -7,8 +7,10 @@ public class PayFineControl {
 	
 	//Change variable name ui to payfineui.
 	private PayFineUI payfineui ;
-	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private CONTROL_STATE state;
+        //remove the space in CONTROLSTATE 
+	private enum CONTROLSTATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	//remove the space in CONTROLSTATE 
+	private CONTROLSTATE state;
 	
 	private library library;
 	private member member;;
