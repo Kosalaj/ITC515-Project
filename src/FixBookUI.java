@@ -5,9 +5,9 @@ public class FixBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
 
-	private FixBookControl control;
-	private Scanner input;
-	private UI_STATE state;
+	private FixBookControl fixBookControl; //control changed to fixBookControl
+	private Scanner userInput; //input changed to userInput @kosala
+	private UI_STATE UiState;//state changed to UiState @kosala
 
 	
 	public FixBookUI(FixBookControl control) {
