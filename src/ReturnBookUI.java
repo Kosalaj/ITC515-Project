@@ -5,16 +5,16 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl control;
-	private Scanner input;
+	private ReturnBookControl controlOfReturn;// change the variable name and make it meaningfull.
+	private Scanner inputScanner;//change the variable name and make it meaningfull.@tharindu 20/08/2018
 	private UI_STATE state;
 
 	
-	public ReturnBookUI(ReturnBookControl control) {
-		this.control = control;
+	public ReturnBookUI(ReturnBookControl controlOfReturn) {
+		this.controlOfReturn = controlOfReturn; // change the variable name and make it meaningfull.
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		controlOfReturn.setUI(this);// change the variable name and make it meaningfull.
 	}
 
 
@@ -31,12 +31,12 @@ public class ReturnBookUI {
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.scanningComplete();
+					controlOfReturn.scanningComplete();// change the variable name and make it meaningfull.
 				}
 				else {
 					try {
 						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						controlOfReturn.bookScanned(bookId);// change the variable name and make it meaningfull.
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -50,7 +50,7 @@ public class ReturnBookUI {
 				if (ans.toUpperCase().equals("Y")) {					
 					isDamaged = true;
 				}
-				control.dischargeLoan(isDamaged);
+				controlOfReturn.dischargeLoan(isDamaged);// change the variable name and make it meaningfull.
 			
 			case COMPLETED:
 				output("Return processing complete");
