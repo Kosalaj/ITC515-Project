@@ -64,18 +64,18 @@ public class ReturnBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String inputData(String prompt) {//chnage the method name with meaningfully
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void output(Object object) {
+	private void outputData(Object object) {//change the method name with meaningfully
 		System.out.println(object);
 	}
 	
 			
-	public void display(Object object) {
+	public void displayData(Object object) {//change the method name with  meaningfully
 		output(object);
 	}
 	
