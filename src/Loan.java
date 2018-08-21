@@ -65,20 +65,20 @@ public class Loan implements Serializable { //loan changed to Loan
 	}
 
 
-	public member Member() { //member changed to Member
+	public Member getMember() { //member changed to Member @kosala ,Member changed to getMember()
 		return M; // M changed to menber
 	}
 
 
 
 	public Book Book() { //book changed to Book @kosala
-		return B; //B changed to book
+		return B; //B changed to book @kosala
 
 	}
 
 
 	public void Loan() {
-		state = LOAN_STATE.DISCHARGED;	//state changed to loanState	
+		state = LOAN_STATE.DISCHARGED;	//state changed to loanState @kosala	
 	}
 
 }
