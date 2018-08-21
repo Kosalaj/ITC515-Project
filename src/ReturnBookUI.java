@@ -50,7 +50,7 @@ public class ReturnBookUI {
 				if (answer.toUpperCase().equals("Y")) {//change the varible name to answer @tharindu 22/08/2018					
 					isDamaged = true;
 				}
-				controlOfReturn.dischargeLoan(isDamaged);// change the variable name and make it meaningfull. @tharindu 22/08/2018
+				controlOfReturn.dischargeLoan(isDamaged); 
 			
 			case COMPLETED:
 				output("Return processing complete");
