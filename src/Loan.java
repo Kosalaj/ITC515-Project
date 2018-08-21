@@ -3,10 +3,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class Loan implements Serializable { // loan changed to Loan @kosala
+public class Loan implements Serializable { //loan changed to Loan
 	
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
+
 	private int loanIdd; //ID changed to loanId
 	private Book book; //book changed to Book @kosala ,B changed to book
 	private member M; //M changed to member@kosala, member change to Member @kosqala
@@ -20,6 +21,9 @@ public class Loan implements Serializable { // loan changed to Loan @kosala
 		this.member = member; //M changed to member @kosala
 		this.dueDate = dueDate; //D changed to duedate @kosala
 		this.loneState = LOAN_STATE.CURRENT; //state changed to loanState @kosala
+
+	
+
 	}
 
 	
@@ -66,8 +70,10 @@ public class Loan implements Serializable { // loan changed to Loan @kosala
 	}
 
 
+
 	public Book Book() { //book changed to Book @kosala
 		return B; //B changed to book
+
 	}
 
 

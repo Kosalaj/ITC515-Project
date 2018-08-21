@@ -20,7 +20,7 @@ public class ReturnBookControl {
 		}	
 		this.ui = ui;
 		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;		
+		state = CONTROL_STATE.READY;//change the code structure with standad way and remove the unnecessary spaces		
 	}
 
 
