@@ -6,7 +6,7 @@ public class ReturnBookControl {
 	
 	private library library;
 	private loan currentLoan;
-	
+	//chnage the code stadndalize @tharindu 22/08/2018
 
 	public ReturnBookControl() {
 		this.library = library.INSTANCE();
@@ -20,7 +20,7 @@ public class ReturnBookControl {
 		}	
 		this.ui = ui;
 		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;//change the code structure with standad way and remove the unnecessary spaces		
+		state = CONTROL_STATE.READY;//change the code structure with standad way and remove the unnecessary spaces and		
 	}
 
 
