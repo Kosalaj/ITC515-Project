@@ -47,8 +47,8 @@ public class ReturnBookUI {
 			case INSPECTING: 
 				String answer = input("Is book damaged? (Y/N): ");//chnage the varible name to answer @tharindu 22/08/2018
 				boolean isDamaged = false;
-				if (answer.toUpperCase().equals("Y")) {      //change the varible name to answer @tharindu 22/08/2018					
-					isDamaged = true;
+				if (answer.toUpperCase().equals("Y")) { //change the varible name to answer @tharindu 22/08/2018					
+					isDamaged = true; //change the varible name to answer @tharindu 22/08/2018	
 				}
 				controlOfReturn.dischargeLoan(isDamaged); 
 			
