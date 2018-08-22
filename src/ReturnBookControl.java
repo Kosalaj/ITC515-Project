@@ -22,7 +22,7 @@ public class ReturnBookControl {
 		ui.setState(ReturnBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;//change the code structure with standad way and remove the unnecessary spaces and		
 	}
-
+	//chnage the code stadndalize @tharindu 22/08/2018
 
 	public void bookScanned(int bookId) {
 		if (!state.equals(CONTROL_STATE.READY)) {
@@ -53,6 +53,7 @@ public class ReturnBookControl {
 		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
 		state = CONTROL_STATE.INSPECTING;		
 	}
+	
 
 
 	public void scanningComplete() {
