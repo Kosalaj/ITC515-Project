@@ -53,7 +53,7 @@ public class ReturnBookControl {
 		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
 		state = CONTROL_STATE.INSPECTING;		
 	}
-	//chnage the code stadndalize @tharindu 22/08/2018
+	
 
 
 	public void scanningComplete() {
