@@ -44,13 +44,13 @@ public class ReturnBookUI {
 				}
 				break;				
 				
-			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+			case INSPECTING: 
+				String answer = input("Is book damaged? (Y/N): ");//chnage the varible name to answer @tharindu 22/08/2018
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
-					isDamaged = true;
+				if (answer.toUpperCase().equals("Y")) { //change the varible name to answer @tharindu 22/08/2018					
+					isDamaged = true; //change the varible name to answer @tharindu 22/08/2018	
 				}
-				controlOfReturn.dischargeLoan(isDamaged);// change the variable name and make it meaningfull.
+				controlOfReturn.dischargeLoan(isDamaged); 
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -64,18 +64,18 @@ public class ReturnBookUI {
 	}
 
 	
-	private String inputData(String prompt) {//chnage the method name with meaningfully
+	private String inputData(String prompt) {//chnage the method name with meaningfully @tharindu 22/08/2018
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void outputData(Object object) {//change the method name with meaningfully
+	private void outputData(Object object) {//change the method name with meaningfully @tharindu 22/08/2018
 		System.out.println(object);
 	}
 	
 			
-	public void displayData(Object object) {//change the method name with  meaningfully
+	public void displayData(Object object) {//change the method name with  meaningfully @tharindu 22/08/2018
 		output(object);
 	}
 	
