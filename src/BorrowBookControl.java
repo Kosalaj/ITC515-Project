@@ -12,7 +12,7 @@ public class BorrowBookControl {
 	
 	private List<book> PENDING;
 	private List<loan> COMPLETED;
-	private book B;
+	private book BarrowItem;//Change the varibale name with meaningfull @tharindu 23/08/2018
 	
 	
 	public BorrowBookControl() {
@@ -51,22 +51,22 @@ public class BorrowBookControl {
 	
 	
 	public void ScannIdOfCard(int bookId) {//change the method name with meaning full @tharindu 23/08/2018
-		B = null;
+		BarrowItem = null;//Change the varibale name with meaningfull @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		B = L.Book(bookId);
-		if (B == null) {
+		BarrowItem = L.Book(bookId);//Change the varibale name with meaningfull @tharindu 23/08/2018
+		if (BarrowItem == null) {
 			ui.display("Invalid bookId");
 			return;
 		}
-		if (!B.Available()) {
+		if (!BarrowItem.Available()) {//Change the varibale name with meaningfull @tharindu 23/08/2018
 			ui.display("Book cannot be borrowed");
 			return;
 		}
-		PENDING.add(B);
-		for (book B : PENDING) {
-			ui.display(B.toString());
+		PENDING.add(BarrowItem);
+		for (book BarrowItem : PENDING) {//Change the varibale name with meaningfull @tharindu 23/08/2018
+			ui.display(BarrowItem.toString());
 		}
 		if (L.loansRemainingForMember(M) - PENDING.size() == 0) {
 			ui.display("Loan limit reached");
@@ -81,11 +81,11 @@ public class BorrowBookControl {
 		}
 		else {
 			ui.display("\nFinal Borrowing List");
-			for (book b : PENDING) {
-				ui.display(b.toString());
+			for (book BorrowBookUI : PENDING) {
+				ui.display(BorrowBookUI.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			ui.setState(BorrowBookUI.UI_STATE.FINALISING);
+			ui.setState(BorrowBookUI.UI_STATE.FINALISING);//Change the varibale name with meaningfull @tharindu 23/08/2018
 			state = CONTROL_STATE.FINALISING;
 		}
 	}
@@ -95,15 +95,15 @@ public class BorrowBookControl {
 		if (!state.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book b : PENDING) {
-			loan loan = L.issueLoan(b, M);
+		for (book BarrowItem : PENDING) {
+			loan loan = L.issueLoan(BarrowItem, M);
 			COMPLETED.add(loan);			
 		}
 		ui.display("Completed Loan Slip");
 		for (loan loan : COMPLETED) {
 			ui.display(loan.toString());
 		}
-		ui.setState(BorrowBookUI.UI_STATE.COMPLETED);
+		ui.setState(BorrowBookUI.UI_STATE.COMPLETED);//Change the varibale name with meaningfull @tharindu 23/08/2018
 		state = CONTROL_STATE.COMPLETED;
 	}
 
