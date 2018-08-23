@@ -31,7 +31,7 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int memberId) {
+	public void SwipIdOfCard(int memberId) {//change the method name with meaning full @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
@@ -50,7 +50,7 @@ public class BorrowBookControl {
 			ui.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
+	public void ScannIdOfCard(int bookId) {//change the method name with meaning full @tharindu 23/08/2018
 		B = null;
 		if (!state.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
@@ -75,7 +75,7 @@ public class BorrowBookControl {
 	}
 	
 	
-	public void Complete() {
+	public void CompleteIdOfCard() {//change the method name with meaning full @tharindu 23/08/2018
 		if (PENDING.size() == 0) {
 			cancel();
 		}
@@ -91,7 +91,7 @@ public class BorrowBookControl {
 	}
 
 
-	public void commitLoans() {
+	public void commitLoansOfExcept() {//change the method name with meaning full @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
@@ -108,7 +108,7 @@ public class BorrowBookControl {
 	}
 
 	
-	public void cancel() {
+	public void cancelOfLoan() {//change the method name with meaning full @tharindu 23/08/2018
 		ui.setState(BorrowBookUI.UI_STATE.CANCELLED);
 		state = CONTROL_STATE.CANCELLED;
 	}
