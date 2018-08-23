@@ -4,7 +4,7 @@ public class ReturnBookControl {
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
 	
-	private library library;
+	private library libraryOfReturn;//Change the varibale name with meaningfull @tharindu 23/08/2018
 	private loan currentLoan;
 	//chnage the code stadndalize @tharindu 22/08/2018
 
@@ -28,7 +28,7 @@ public class ReturnBookControl {
 		if (!state.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book currentBook = library.Book(bookId);
+		book currentBook = libraryOfReturn.Book(bookId);//Change the varibale name with meaningfull @tharindu 23/08/2018
 		
 		if (currentBook == null) {
 			ui.display("Invalid Book Id");
@@ -38,10 +38,10 @@ public class ReturnBookControl {
 			ui.display("Book has not been borrowed");
 			return;
 		}		
-		currentLoan = library.getLoanByBookId(bookId);	
+		currentLoan = libraryOfReturn.getLoanByBookId(bookId);	//Change the varibale name with meaningfull @tharindu 23/08/2018
 		double overDueFine = 0.0;
 		if (currentLoan.isOverDue()) {
-			overDueFine = library.calculateOverDueFine(currentLoan);
+			overDueFine = libraryOfReturn.calculateOverDueFine(currentLoan);//Change the varibale name with meaningfull @tharindu 23/08/2018
 		}
 		ui.display("Inspecting");
 		ui.display(currentBook.toString());
@@ -53,7 +53,7 @@ public class ReturnBookControl {
 		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
 		state = CONTROL_STATE.INSPECTING;		
 	}
-	
+
 
 
 	public void scanningComplete() {
@@ -68,7 +68,7 @@ public class ReturnBookControl {
 		if (!state.equals(CONTROL_STATE.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
-		library.dischargeLoan(currentLoan, isDamaged);
+		libraryOfReturn.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
 		ui.setState(ReturnBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;				
