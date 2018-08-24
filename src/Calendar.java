@@ -58,12 +58,13 @@ public class Calendar {
 	}
 
 	public synchronized Date getDueDate(int loanPeriod) {
-		Date now = Date();
+		//Change variable now as date
+		Date date = Date();
 		//Change variable cal as calendar
 		calendar.add(java.util.Calendar.DATE, loanPeriod);
 		Date dueDate = cal.getTime();
 		//Change variable cal as calendar
-		calendar.setTime(now);
+		calendar.setTime(date );
 		return dueDate;
 	}
 	
