@@ -14,18 +14,32 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 public class library implements Serializable {
+
+	/**
+	* @author  Chathuranga Muthukumarana.
+	* @date   2018-08-24 
+	*/
 	
-	private static final String LIBRARY_FILE = "library.obj";
-	private static final int LOAN_LIMIT = 2;
-	private static final int LOAN_PERIOD = 2;
-	private static final double FINE_PER_DAY = 1.0;
-	private static final double MAX_FINES_OWED = 5.0;
+	//change veriable LIBRARY_FILE to libraryfile	
+	private static final String libraryfile = "library.obj";
+	//change veriable LOAN_LIMIT  to loanlimit
+	private static final int loanlimit = 2;
+	//change veriable LOAN_PERIOD to loanperiod
+	private static final int loanperiod = 2;
+	//change veriable FINE_PER_DAY to fineperday
+	private static final double fineperday = 1.0;
+	//change veriable MAX_FINES_OWED to maxfinesowed
+	private static final double maxfinesowed = 5.0;
+	//change veriable DAMAGE_FEE to damagefee
 	private static final double DAMAGE_FEE = 2.0;
 	
 	private static library self;
+	//change veriable BID to bookid
 	private int BID;
+	//change veriable MID to memberid
 	private int MID;
-	private int LID;
+	//change veriable LID to loanid
+	private int loanid;
 	private Date loadDate;
 	
 	private Map<Integer, book> catalog;
