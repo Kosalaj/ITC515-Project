@@ -14,7 +14,7 @@ public class ReturnBookControl {
 	}
 	
 	
-	public void setUI(ReturnBookUI ui) {
+	public void setOfReturnBookUI(ReturnBookUI ui) {//change the method name for meaningfulled name @tharindu 26/08/2018
 		if (!state.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -24,7 +24,7 @@ public class ReturnBookControl {
 	}
 	//chnage the code stadndalize @tharindu 22/08/2018
 
-	public void bookScanned(int bookId) {
+	public void bookScannedControl(int bookId) {//change the method name for meaningfulled name @tharindu 26/08/2018
 		if (!state.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
@@ -56,7 +56,7 @@ public class ReturnBookControl {
 
 
 
-	public void scanningComplete() {
+	public void scanningCompleteOfBoook() {//change the method name for meaningfulled name @tharindu 26/08/2018
 		if (!state.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
