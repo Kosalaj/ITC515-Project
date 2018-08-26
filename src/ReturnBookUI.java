@@ -10,7 +10,7 @@ public class ReturnBookUI {
 	private UI_STATE state;
 
 	
-	public ReturnBookUI(ReturnBookControl controlOfReturn) {
+	public ReturnBookUI(ReturnBookControl controlOfReturn) {//change the method name meaningfull
 		this.controlOfReturn = controlOfReturn; // change the variable name and make it meaningfull.
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
