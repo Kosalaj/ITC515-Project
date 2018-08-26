@@ -97,33 +97,33 @@ public class library implements Serializable {
 			}
 		}
 	}
-
 	
-	public int BookID() {
+	//change method BookID to getBookID
+	public int getBookID() {
 		//change veriable BID to bookid
 		return bookid;
 	}
 	
-	
+	//change method MemberID to getMemberID
 	public int MemberID() {
 		//change veriable MID to memberid
 		return memberid;
 	}
 	
-	
-	private int nextBID() {
+	//change method nextBID to nextBookID 
+	private int nextBookID() {
 		//change veriable BID to bookid
 		return bookid++;
 	}
-
-	
-	private int nextMID() {
+ 
+	//change method nextMID to nextMemberid 
+	private int nextMemberid() {
 		//change veriable MID to memberid
 		return memberid++;
 	}
 
-	
-	private int nextLID() {
+	//change method nextLID to nextLoanid	
+	private int nextLoanid	() {
 		//change veriable LID to loanid	
 		return loanid++;
 	}
