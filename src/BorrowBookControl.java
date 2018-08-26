@@ -5,8 +5,8 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI ui;
 	
-	private library L;
-	private member M;
+	private library libary;//change the variable name with meaningfull 
+	private member member;//change the variable name with meaningfull 
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
@@ -16,7 +16,7 @@ public class BorrowBookControl {
 	
 	
 	public BorrowBookControl() {
-		this.L = L.INSTANCE();
+		this.libary = libary.INSTANCE();//change the variable name with meaningfull 
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
@@ -35,12 +35,12 @@ public class BorrowBookControl {
 		if (!state.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = L.getMember(memberId);
-		if (M == null) {
+		member = libary.getMember(memberId);//change the variable name with meaningfull 
+		if (member == null) {//change the variable name with meaningfull 
 			ui.display("Invalid memberId");
 			return;
 		}
-		if (L.memberCanBorrow(M)) {
+		if (libary.memberCanBorrow(member)) {//change the variable name with meaningfull 
 			PENDING = new ArrayList<>();
 			ui.setState(BorrowBookUI.UI_STATE.SCANNING);
 			state = CONTROL_STATE.SCANNING; }
@@ -55,7 +55,7 @@ public class BorrowBookControl {
 		if (!state.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		BarrowItem = L.Book(bookId);//Change the varibale name with meaningfull @tharindu 23/08/2018
+		BarrowItem = libary.Book(bookId);//Change the varibale name with meaningfull @tharindu 23/08/2018
 		if (BarrowItem == null) {
 			ui.display("Invalid bookId");
 			return;
@@ -68,7 +68,7 @@ public class BorrowBookControl {
 		for (book BarrowItem : PENDING) {//Change the varibale name with meaningfull @tharindu 23/08/2018
 			ui.display(BarrowItem.toString());
 		}
-		if (L.loansRemainingForMember(M) - PENDING.size() == 0) {
+		if (libary.loansRemainingForMember(member) - PENDING.size() == 0) {//change the variable name with meaningfull 
 			ui.display("Loan limit reached");
 			Complete();
 		}
@@ -96,7 +96,7 @@ public class BorrowBookControl {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (book BarrowItem : PENDING) {
-			loan loan = L.issueLoan(BarrowItem, M);
+			loan loan = libary.issueLoan(BarrowItem, member);//change the method name with meaning full
 			COMPLETED.add(loan);			
 		}
 		ui.display("Completed Loan Slip");
