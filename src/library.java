@@ -35,9 +35,9 @@ public class library implements Serializable {
 	
 	private static library self;
 	//change veriable BID to bookid
-	private int BID;
+	private int bookid;
 	//change veriable MID to memberid
-	private int MID;
+	private int memberid;
 	//change veriable LID to loanid
 	private int loanid;
 	private Date loadDate;
@@ -55,9 +55,12 @@ public class library implements Serializable {
 		loans = new HashMap<>();
 		currentLoans = new HashMap<>();
 		damagedBooks = new HashMap<>();
-		BID = 1;
-		MID = 1;		
-		LID = 1;		
+		//change veriable BID to bookid
+		bookid = 1;
+		//change veriable MID to memberid
+		memberid = 1;	
+		//change veriable LID to loanid	
+		loanid = 1;		
 	}
 
 	
@@ -97,27 +100,32 @@ public class library implements Serializable {
 
 	
 	public int BookID() {
-		return BID;
+		//change veriable BID to bookid
+		return bookid;
 	}
 	
 	
 	public int MemberID() {
-		return MID;
+		//change veriable MID to memberid
+		return memberid;
 	}
 	
 	
 	private int nextBID() {
-		return BID++;
+		//change veriable BID to bookid
+		return bookid++;
 	}
 
 	
 	private int nextMID() {
-		return MID++;
+		//change veriable MID to memberid
+		return memberid++;
 	}
 
 	
 	private int nextLID() {
-		return LID++;
+		//change veriable LID to loanid	
+		return loanid++;
 	}
 
 	
