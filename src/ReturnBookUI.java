@@ -5,16 +5,16 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl control;
-	private Scanner input;
+	private ReturnBookControl controlOfReturn;// change the variable name and make it meaningfull.
+	private Scanner inputScanner;//change the variable name and make it meaningfull.@tharindu 20/08/2018
 	private UI_STATE state;
 
 	
-	public ReturnBookUI(ReturnBookControl control) {
-		this.control = control;
+	public ReturnBookUI(ReturnBookControl controlOfReturn) {//change the method name meaningfull
+		this.controlOfReturn = controlOfReturn; // change the variable name and make it meaningfull.
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		controlOfReturn.setUI(this);// change the variable name and make it meaningfull.
 	}
 
 
@@ -31,12 +31,12 @@ public class ReturnBookUI {
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.scanningComplete();
+					controlOfReturn.scanningComplete();// change the variable name and make it meaningfull.
 				}
 				else {
 					try {
 						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						controlOfReturn.bookScanned(bookId);// change the variable name and make it meaningfull.
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -44,13 +44,13 @@ public class ReturnBookUI {
 				}
 				break;				
 				
-			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+			case INSPECTING: 
+				String answer = input("Is book damaged? (Y/N): ");//chnage the varible name to answer @tharindu 22/08/2018
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
-					isDamaged = true;
+				if (answer.toUpperCase().equals("Y")) { //change the varible name to answer @tharindu 22/08/2018					
+					isDamaged = true; //change the varible name to answer @tharindu 22/08/2018	
 				}
-				control.dischargeLoan(isDamaged);
+				controlOfReturn.dischargeLoan(isDamaged); 
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -64,18 +64,18 @@ public class ReturnBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String inputData(String prompt) {//chnage the method name with meaningfully @tharindu 22/08/2018
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void output(Object object) {
+	private void outputData(Object object) {//change the method name with meaningfully @tharindu 22/08/2018
 		System.out.println(object);
 	}
 	
 			
-	public void display(Object object) {
+	public void displayData(Object object) {//change the method name with  meaningfully @tharindu 22/08/2018
 		output(object);
 	}
 	

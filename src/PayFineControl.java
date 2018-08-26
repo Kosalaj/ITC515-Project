@@ -7,9 +7,11 @@ public class PayFineControl {
 	
 	//Change variable name ui to payfineui.
 	private PayFineUI payfineui ;
+
 	//Remove variable space name CONTROL_STATE to CONTROLSTATE.
 	private enum CONTROLSTATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+
 	private CONTROLSTATE state;
 	
 	private library library;
@@ -52,16 +54,20 @@ public class PayFineControl {
 		payfineui.display(member.toString());
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.PAYING);
+
 		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
 		state = CONTROLSTATE.PAYING;
+
 	}
 	
 	
 	public void cancel() {
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.CANCELLED);
+
 		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
 		state = CONTROLSTATE.CANCELLED;
+
 	}
 
 
@@ -79,8 +85,10 @@ public class PayFineControl {
 		payfineui.display(member.toString());
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.COMPLETED);
+
 		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
 		state = CONTROLSTATE.COMPLETED;
+
 		return change;
 	}
 	
