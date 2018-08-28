@@ -7,19 +7,19 @@ public class FixBookUI {
 
 	private FixBookControl fixBookControl; //control changed to fixBookControl
 	private Scanner userInput; //input changed to userInput @kosala
-	private UI_STATE UiState;//state changed to UiState @kosala
+	private UI_STATE uiState;//state changed to UiState @kosala
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		this.fixBookControl = control;
+		userInput = new Scanner(System.in);
+		uiState = UI_STATE.INITIALISED;
+		fixBookControl.setUI(this);
 	}
 
 
 	public void setState(UI_STATE state) {
-		this.state = state;
+		this.uiState = state;
 	}
 
 	
