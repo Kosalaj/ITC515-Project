@@ -28,17 +28,17 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (state) {
+			switch (uiState) {//state changed to uiState @kosala
 			
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.scanningComplete();
+					fixBookControl.scanningComplete();
 				}
 				else {
 					try {
 						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						fixBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +52,7 @@ public class FixBookUI {
 				if (ans.toUpperCase().equals("Y")) {
 					fix = true;
 				}
-				control.fixBook(fix);
+				fixBookControl.fixBook(fix);
 				break;
 								
 			case COMPLETED:
@@ -61,7 +61,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);	//state changed to uiState @kosala		
 			
 			}		
 		}
@@ -71,7 +71,7 @@ public class FixBookUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		return userInput.nextLine(); //input changed to userInput @kosala
 	}	
 		
 		
