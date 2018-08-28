@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static Library LIB; //library changed to Library @kosala
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner userInput;
+	private static Library library; //library changed to Library @kosala
+	private static String menuList; //MENU changed to menuList 
+	private static Calendar calender;
+	private static SimpleDateFormat simpleDataFormat;
 	
 	
 	private static String Get_menu() {
@@ -39,27 +39,27 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = Library.INSTANCE();//library changed to Library @kosala
-			CAL = Calendar.getInstance();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			userInput = new Scanner(System.in);//IN changed to userInput 
+			library = Library.INSTANCE();//library changed to Library @kosala
+			calender = Calendar.getInstance(); //CAL changed to calender
+			simpleDataFormat = new SimpleDateFormat("dd/MM/yyyy"); //SDF changed  to simpleDataFormarmat; 
 	
-			for (Member m : LIB.Members()) {
+			for (Member m : library.Members()) {
 				output(m);
 			}
 			output(" ");
-			for (Book b : LIB.Books()) {
-				output(b);
+			for (Book book : Library.Books()) {//b changed to book
+				output(book);
 			}
 						
-			MENU = Get_menu();
+			menuList = Get_menu();//MENU changed to menuList
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + simpleDateFormat.format(calender.Date()));//CAL changed to calender
+				String c = input(menuList);//MENU changed to menuLIst
 				
 				switch (c.toUpperCase()) {
 				
@@ -128,7 +128,7 @@ public class Main {
 
 	private static void listCurrentLoans() {
 		output("");
-		for (Loan loan : LIB.CurrentLoans()) {//loan changed to LOan
+		for (Loan loan : library.CurrentLoans()) {//loan changed to Loan ,library
 			output(loan + "\n");
 		}		
 	}
@@ -137,7 +137,7 @@ public class Main {
 
 	private static void listBooks() {
 		output("");
-		for (Book book : LIB.Books()) { //book chaned to Book
+		for (Book book : library.Books()) { //book chaned to Book
 			output(book + "\n");
 		}		
 	}
