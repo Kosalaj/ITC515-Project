@@ -73,7 +73,7 @@ public class Loan implements Serializable { //loan changed to Loan
 
 
 
-	public Book Book() { //book changed to Book @kosala
+	public Book getBook() { //book changed to Book @kosala,Book() changed to getBook()@kosala
 		return book; //B changed to book @kosala
 
 		return B; //B changed to book kosala
