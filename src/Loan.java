@@ -8,9 +8,9 @@ public class Loan implements Serializable { //loan changed to Loan
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
 
-	private int loanIdd; //ID changed to loanId @kosala
+	private int loanIdd; //ID changed to loanId
 	private Book book; //book changed to Book @kosala ,B changed to book
-	private member M; //M changed to member @kosala, member change to Member @kosqala
+	private member M; //M changed to member@kosala, member change to Member @kosqala
 	private Date dueDate; //D changed to dueDate @kosala
 	private LOAN_STATE loanState; //state to loanState @kosala
 
@@ -65,14 +65,22 @@ public class Loan implements Serializable { //loan changed to Loan
 	}
 
 
+<<<<<<< HEAD
+	public Member getMember() { //member changed to Member ,Member changed to getMember()
+=======
 	public Member getMember() { //member changed to Member @kosala ,Member changed to getMember()
+>>>>>>> 3d5d448e736668195d375ed7dacbec57e924438c
 		return M; // M changed to menber
 	}
 
 
 
 	public Book Book() { //book changed to Book @kosala
+<<<<<<< HEAD
+		return B; //B changed to book kosala
+=======
 		return B; //B changed to book @kosala
+>>>>>>> 3d5d448e736668195d375ed7dacbec57e924438c
 
 	}
 
