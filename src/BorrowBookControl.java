@@ -5,18 +5,18 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI ui;
 	
-	private library L;
-	private member M;
+	private library libary;//change the variable name with meaningfull 
+	private member member;//change the variable name with meaningfull 
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
 	private List<book> PENDING;
 	private List<loan> COMPLETED;
-	private book B;
+	private book BarrowItem;//Change the varibale name with meaningfull @tharindu 23/08/2018
 	
 	
 	public BorrowBookControl() {
-		this.L = L.INSTANCE();
+		this.libary = libary.INSTANCE();//change the variable name with meaningfull 
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
@@ -31,16 +31,16 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int memberId) {
+	public void SwipIdOfCard(int memberId) {//change the method name with meaning full @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = L.getMember(memberId);
-		if (M == null) {
+		member = libary.getMember(memberId);//change the variable name with meaningfull 
+		if (member == null) {//change the variable name with meaningfull 
 			ui.display("Invalid memberId");
 			return;
 		}
-		if (L.memberCanBorrow(M)) {
+		if (libary.memberCanBorrow(member)) {//change the variable name with meaningfull 
 			PENDING = new ArrayList<>();
 			ui.setState(BorrowBookUI.UI_STATE.SCANNING);
 			state = CONTROL_STATE.SCANNING; }
@@ -50,65 +50,65 @@ public class BorrowBookControl {
 			ui.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
-		B = null;
+	public void ScannIdOfCard(int bookId) {//change the method name with meaning full @tharindu 23/08/2018
+		BarrowItem = null;//Change the varibale name with meaningfull @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		B = L.Book(bookId);
-		if (B == null) {
+		BarrowItem = libary.Book(bookId);//Change the varibale name with meaningfull @tharindu 23/08/2018
+		if (BarrowItem == null) {
 			ui.display("Invalid bookId");
 			return;
 		}
-		if (!B.Available()) {
+		if (!BarrowItem.Available()) {//Change the varibale name with meaningfull @tharindu 23/08/2018
 			ui.display("Book cannot be borrowed");
 			return;
 		}
-		PENDING.add(B);
-		for (book B : PENDING) {
-			ui.display(B.toString());
+		PENDING.add(BarrowItem);
+		for (book BarrowItem : PENDING) {//Change the varibale name with meaningfull @tharindu 23/08/2018
+			ui.display(BarrowItem.toString());
 		}
-		if (L.loansRemainingForMember(M) - PENDING.size() == 0) {
+		if (libary.loansRemainingForMember(member) - PENDING.size() == 0) {//change the variable name with meaningfull 
 			ui.display("Loan limit reached");
 			Complete();
 		}
 	}
 	
 	
-	public void Complete() {
+	public void CompleteIdOfCard() {//change the method name with meaning full @tharindu 23/08/2018
 		if (PENDING.size() == 0) {
 			cancel();
 		}
 		else {
 			ui.display("\nFinal Borrowing List");
-			for (book b : PENDING) {
-				ui.display(b.toString());
+			for (book BorrowBookUI : PENDING) {
+				ui.display(BorrowBookUI.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			ui.setState(BorrowBookUI.UI_STATE.FINALISING);
+			ui.setState(BorrowBookUI.UI_STATE.FINALISING);//Change the varibale name with meaningfull @tharindu 23/08/2018
 			state = CONTROL_STATE.FINALISING;
 		}
 	}
 
 
-	public void commitLoans() {
+	public void commitLoansOfExcept() {//change the method name with meaning full @tharindu 23/08/2018
 		if (!state.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book b : PENDING) {
-			loan loan = L.issueLoan(b, M);
+		for (book BarrowItem : PENDING) {
+			loan loan = libary.issueLoan(BarrowItem, member);//change the method name with meaning full
 			COMPLETED.add(loan);			
 		}
 		ui.display("Completed Loan Slip");
 		for (loan loan : COMPLETED) {
 			ui.display(loan.toString());
 		}
-		ui.setState(BorrowBookUI.UI_STATE.COMPLETED);
+		ui.setState(BorrowBookUI.UI_STATE.COMPLETED);//Change the varibale name with meaningfull @tharindu 23/08/2018
 		state = CONTROL_STATE.COMPLETED;
 	}
 
 	
-	public void cancel() {
+	public void cancelOfLoan() {//change the method name with meaning full @tharindu 23/08/2018
 		ui.setState(BorrowBookUI.UI_STATE.CANCELLED);
 		state = CONTROL_STATE.CANCELLED;
 	}

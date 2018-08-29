@@ -65,8 +65,10 @@ public class Loan implements Serializable { //loan changed to Loan
 	}
 
 
+
 	public Member getMember() { //member changed to Member @kosala ,Member changed to getMember()
-		return member; // M changed to menber
+
+		return member; // M changed to member
 	}
 
 
@@ -74,6 +76,7 @@ public class Loan implements Serializable { //loan changed to Loan
 	public Book getBook() { //book changed to Book @kosala,Book() changed to getBook()@kosala
 		return book; //B changed to book @kosala
 
+		return B; //B changed to book kosala
 	}
 
 

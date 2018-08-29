@@ -7,9 +7,11 @@ public class PayFineControl {
 	
 	//Change variable name ui to payfineui.
 	private PayFineUI payfineui ;
-        //remove the space in CONTROLSTATE 
+
+	//Remove variable space name CONTROL_STATE to CONTROLSTATE.
 	private enum CONTROLSTATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	//remove the space in CONTROLSTATE 
+	//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+
 	private CONTROLSTATE state;
 	
 	private library library;
@@ -18,23 +20,27 @@ public class PayFineControl {
 
 	public PayFineControl() {
 		this.library = library.INSTANCE();
-		state = CONTROL_STATE.INITIALISED;
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		state = CONTROLSTATE.INITIALISED;
 	}
 	
 	
 	public void setUI(PayFineUI ui) {
-		if (!state.equals(CONTROL_STATE.INITIALISED)) {
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		if (!state.equals(CONTROLSTATE.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}
 		//Change variable name ui to payfineui.	
 		this.payfineui = ui;
 		ui.setState(PayFineUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;		
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		state = CONTROLSTATE.READY;		
 	}
 
 
 	public void cardSwiped(int memberId) {
-		if (!state.equals(CONTROL_STATE.READY)) {
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		if (!state.equals(CONTROLSTATE.READY)) {
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
 		member = library.getMember(memberId);
@@ -48,19 +54,26 @@ public class PayFineControl {
 		payfineui.display(member.toString());
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.PAYING);
-		state = CONTROL_STATE.PAYING;
+
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		state = CONTROLSTATE.PAYING;
+
 	}
 	
 	
 	public void cancel() {
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.CANCELLED);
-		state = CONTROL_STATE.CANCELLED;
+
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		state = CONTROLSTATE.CANCELLED;
+
 	}
 
 
 	public double payFine(double amount) {
-		if (!state.equals(CONTROL_STATE.PAYING)) {
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		if (!state.equals(CONTROLSTATE.PAYING)) {
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
 		double change = member.payFine(amount);
@@ -72,7 +85,10 @@ public class PayFineControl {
 		payfineui.display(member.toString());
 		//Change variable name ui to payfineui
 		payfineui.setState(PayFineUI.UI_STATE.COMPLETED);
-		state = CONTROL_STATE.COMPLETED;
+
+		//Remove variable space name CONTROL_STATE to CONTROLSTATE.
+		state = CONTROLSTATE.COMPLETED;
+
 		return change;
 	}
 	
