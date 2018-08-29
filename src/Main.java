@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
-	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static Scanner userInput;
+	private static Library library; //library changed to Library @kosala
+	private static String menuList; //MENU changed to menuList 
+	private static Calendar calender;
+	private static SimpleDateFormat simpleDataFormat;
 	
 	
 	private static String Get_menu() {
@@ -39,27 +39,27 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.getInstance();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			userInput = new Scanner(System.in);//IN changed to userInput 
+			library = Library.INSTANCE();//library changed to Library @kosala
+			calender = Calendar.getInstance(); //CAL changed to calender
+			simpleDataFormat = new SimpleDateFormat("dd/MM/yyyy"); //SDF changed  to simpleDataFormarmat; 
 	
-			for (member m : LIB.Members()) {
+			for (Member m : library.Members()) {
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.Books()) {
-				output(b);
+			for (Book book : Library.Books()) {//b changed to book
+				output(book);
 			}
 						
-			MENU = Get_menu();
+			menuList = Get_menu();//MENU changed to menuList
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + simpleDateFormat.format(calender.Date()));//CAL changed to calender
+				String c = input(menuList);//MENU changed to menuLIst
 				
 				switch (c.toUpperCase()) {
 				
@@ -120,14 +120,15 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void payFine() {
+	
+	private static void payFine() {
 		new PayFineUI(new PayFineControl()).run();		
 	}
 
 
 	private static void listCurrentLoans() {
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (Loan loan : library.CurrentLoans()) {//loan changed to Loan ,library
 			output(loan + "\n");
 		}		
 	}
@@ -136,7 +137,7 @@ public class Main {
 
 	private static void listBooks() {
 		output("");
-		for (book book : LIB.Books()) {
+		for (Book book : library.Books()) { //book chaned to Book
 			output(book + "\n");
 		}		
 	}
@@ -145,7 +146,7 @@ public class Main {
 
 	private static void listMembers() {
 		output("");
-		for (member member : LIB.Members()) {
+		for (Member member : LIB.Members()) {
 			output(member + "\n");
 		}		
 	}
@@ -185,7 +186,7 @@ public class Main {
 		String author = input("Enter author: ");
 		String title  = input("Enter title: ");
 		String callNo = input("Enter call number: ");
-		book book = LIB.Add_book(author, title, callNo);
+		Book book = LIB.Add_book(author, title, callNo); //book changed to Book
 		output("\n" + book + "\n");
 		
 	}
@@ -197,7 +198,7 @@ public class Main {
 			String firstName  = input("Enter first name: ");
 			String email = input("Enter email: ");
 			int phoneNo = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member member = LIB.Add_mem(lastName, firstName, email, phoneNo);
+			Member member = LIB.Add_mem(lastName, firstName, email, phoneNo);
 			output("\n" + member + "\n");
 			
 		} catch (NumberFormatException e) {

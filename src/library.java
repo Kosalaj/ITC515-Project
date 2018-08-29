@@ -14,32 +14,18 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 public class library implements Serializable {
-
-	/**
-	* @author  Chathuranga Muthukumarana.
-	* @date   2018-08-24 
-	*/
 	
-	//change veriable LIBRARY_FILE to libraryfile	
-	private static final String libraryfile = "library.obj";
-	//change veriable LOAN_LIMIT  to loanlimit
-	private static final int loanlimit = 2;
-	//change veriable LOAN_PERIOD to loanperiod
-	private static final int loanperiod = 2;
-	//change veriable FINE_PER_DAY to fineperday
-	private static final double fineperday = 1.0;
-	//change veriable MAX_FINES_OWED to maxfinesowed
-	private static final double maxfinesowed = 5.0;
-	//change veriable DAMAGE_FEE to damagefee
-	private static final double damagefee = 2.0;
+	private static final String LIBRARY_FILE = "library.obj";
+	private static final int LOAN_LIMIT = 2;
+	private static final int LOAN_PERIOD = 2;
+	private static final double FINE_PER_DAY = 1.0;
+	private static final double MAX_FINES_OWED = 5.0;
+	private static final double DAMAGE_FEE = 2.0;
 	
 	private static library self;
-	//change veriable BID to bookid
-	private int bookid;
-	//change veriable MID to memberid
-	private int memberid;
-	//change veriable LID to loanid
-	private int loanid;
+	private int BID;
+	private int MID;
+	private int LID;
 	private Date loadDate;
 	
 	private Map<Integer, book> catalog;
@@ -55,12 +41,9 @@ public class library implements Serializable {
 		loans = new HashMap<>();
 		currentLoans = new HashMap<>();
 		damagedBooks = new HashMap<>();
-		//change veriable BID to bookid
-		bookid = 1;
-		//change veriable MID to memberid
-		memberid = 1;	
-		//change veriable LID to loanid	
-		loanid = 1;		
+		BID = 1;
+		MID = 1;		
+		LID = 1;		
 	}
 
 	
@@ -97,35 +80,30 @@ public class library implements Serializable {
 			}
 		}
 	}
+
 	
-	//change method BookID to getBookID
-	public int getBookID() {
-		//change veriable BID to bookid
-		return bookid;
+	public int BookID() {
+		return BID;
 	}
 	
-	//change method MemberID to getMemberID
+	
 	public int MemberID() {
-		//change veriable MID to memberid
-		return memberid;
+		return MID;
 	}
 	
-	//change method nextBID to nextBookID 
-	private int nextBookID() {
-		//change veriable BID to bookid
-		return bookid++;
-	}
- 
-	//change method nextMID to nextMemberid 
-	private int nextMemberid() {
-		//change veriable MID to memberid
-		return memberid++;
+	
+	private int nextBID() {
+		return BID++;
 	}
 
-	//change method nextLID to nextLoanid	
-	private int nextLoanid	() {
-		//change veriable LID to loanid	
-		return loanid++;
+	
+	private int nextMID() {
+		return MID++;
+	}
+
+	
+	private int nextLID() {
+		return LID++;
 	}
 
 	
@@ -143,15 +121,15 @@ public class library implements Serializable {
 		return new ArrayList<loan>(currentLoans.values());
 	}
 
-        //change method Add_mem to addmember
-	public member addmember(String lastName, String firstName, String email, int phoneNo) {		
+
+	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
 		member member = new member(lastName, firstName, email, phoneNo, nextMID());
 		members.put(member.getId(), member);		
 		return member;
 	}
 
-	//change method Add_book to addBook
-	public book addBook(String a, String t, String c) {		
+	
+	public book Add_book(String a, String t, String c) {		
 		book b = new book(a, t, c, nextBID());
 		catalog.put(b.ID(), b);		
 		return b;
@@ -173,17 +151,15 @@ public class library implements Serializable {
 
 	
 	public int loanLimit() {
-		//change veriable LOAN_LIMIT  to loanlimit
-		return loanlimit;
+		return LOAN_LIMIT;
 	}
 
 	
-	public boolean memberCanBorrow(member member) {	
-		//change veriable LOAN_LIMIT  to loanlimit	
-		if (member.getNumberOfCurrentLoans() == loanlimit) 
+	public boolean memberCanBorrow(member member) {		
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) 
 			return false;
-		//change veriable MAX_FINES_OWED to maxfinesowed		
-		if (member.getFinesOwed() >= maxfinesowed) 
+				
+		if (member.getFinesOwed() >= MAX_FINES_OWED) 
 			return false;
 				
 		for (loan loan : member.getLoans()) 
@@ -194,15 +170,13 @@ public class library implements Serializable {
 	}
 
 	
-	public int loansRemainingForMember(member member) {
-		//change veriable LOAN_LIMIT  to loanlimit		
-		return loanlimit- member.getNumberOfCurrentLoans();
+	public int loansRemainingForMember(member member) {		
+		return LOAN_LIMIT - member.getNumberOfCurrentLoans();
 	}
 
 	
 	public loan issueLoan(book book, member member) {
-		//change veriable LOAN_PERIOD to loanperiod
-		Date dueDate = Calendar.getInstance().getDueDate(loanperiod);
+		Date dueDate = Calendar.getInstance().getDueDate(LOAN_PERIOD);
 		loan loan = new loan(nextLID(), book, member, dueDate);
 		member.takeOutLoan(loan);
 		book.Borrow();
@@ -223,8 +197,7 @@ public class library implements Serializable {
 	public double calculateOverDueFine(loan loan) {
 		if (loan.isOverDue()) {
 			long daysOverDue = Calendar.getInstance().getDaysDifference(loan.getDueDate());
-			//change veriable FINE_PER_DAY to fineperday
-			double fine = daysOverDue * fineperday;
+			double fine = daysOverDue * FINE_PER_DAY;
 			return fine;
 		}
 		return 0.0;		
@@ -241,8 +214,7 @@ public class library implements Serializable {
 		member.dischargeLoan(currentLoan);
 		book.Return(isDamaged);
 		if (isDamaged) {
-			//change veriable DAMAGE_FEE to damagefee
-			member.addFine(damagefee);
+			member.addFine(DAMAGE_FEE);
 			damagedBooks.put(book.ID(), book);
 		}
 		currentLoan.Loan();

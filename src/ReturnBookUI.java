@@ -10,7 +10,7 @@ public class ReturnBookUI {
 	private UI_STATE state;
 
 	
-	public ReturnBookUI(ReturnBookControl controlOfReturn) {//change the method name meaningfull
+	public ReturnBookUI(ReturnBookControl controlOfReturn) {
 		this.controlOfReturn = controlOfReturn; // change the variable name and make it meaningfull.
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
@@ -44,13 +44,13 @@ public class ReturnBookUI {
 				}
 				break;				
 				
-			case INSPECTING: 
-				String answer = input("Is book damaged? (Y/N): ");//chnage the varible name to answer @tharindu 22/08/2018
+			case INSPECTING:
+				String ans = input("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
-				if (answer.toUpperCase().equals("Y")) { //change the varible name to answer @tharindu 22/08/2018					
-					isDamaged = true; //change the varible name to answer @tharindu 22/08/2018	
+				if (ans.toUpperCase().equals("Y")) {					
+					isDamaged = true;
 				}
-				controlOfReturn.dischargeLoan(isDamaged); 
+				controlOfReturn.dischargeLoan(isDamaged);// change the variable name and make it meaningfull.
 			
 			case COMPLETED:
 				output("Return processing complete");
@@ -64,18 +64,18 @@ public class ReturnBookUI {
 	}
 
 	
-	private String inputData(String prompt) {//chnage the method name with meaningfully @tharindu 22/08/2018
+	private String input(String prompt) {
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
 		
-	private void outputData(Object object) {//change the method name with meaningfully @tharindu 22/08/2018
+	private void output(Object object) {
 		System.out.println(object);
 	}
 	
 			
-	public void displayData(Object object) {//change the method name with  meaningfully @tharindu 22/08/2018
+	public void display(Object object) {
 		output(object);
 	}
 	
