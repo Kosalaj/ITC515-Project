@@ -7,41 +7,41 @@ public class FixBookUI {
 
 	private FixBookControl fixBookControl; //control changed to fixBookControl
 	private Scanner userInput; //input changed to userInput @kosala
-	private UI_STATE UiState;//state changed to UiState @kosala
+	private UI_STATE uiState;//state changed to UiState @kosala
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.control = control;
-		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		this.fixBookControl = control;
+		userInput = new Scanner(System.in);
+		uiState = UI_STATE.INITIALISED;
+		fixBookControl.setUI(this);
 	}
 
 
-	public void setState(UI_STATE state) {
-		this.state = state;
+	public void setUiState(UI_STATE state) {
+		this.uiState = state;
 	}
 
 	
 	public void run() {
-		output("Fix Book Use Case UI\n");
+		PrintOutput("Fix Book Use Case UI\n");//output() chaneged to PrintOutput() @kosala
 		
 		while (true) {
 			
-			switch (state) {
+			switch (uiState) {//state changed to uiState @kosala
 			
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.scanningComplete();
+					fixBookControl.scanningComplete();
 				}
 				else {
 					try {
 						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						fixBookControl.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
-						output("Invalid bookId");
+						PrintOutput("Invalid bookId");//output() chaneged to PrintOutput() @kosala
 					}
 				}
 				break;	
@@ -52,16 +52,16 @@ public class FixBookUI {
 				if (ans.toUpperCase().equals("Y")) {
 					fix = true;
 				}
-				control.fixBook(fix);
+				fixBookControl.fixBook(fix);
 				break;
 								
 			case COMPLETED:
-				output("Fixing process complete");
+				PrintOutput("Fixing process complete");//output() chaneged to PrintOutput() @kosala
 				return;
 			
 			default:
-				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				PrintOutput("Unhandled state");//output() chaneged to PrintOutput() @kosala
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);	//state changed to uiState @kosala		
 			
 			}		
 		}
@@ -69,19 +69,19 @@ public class FixBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String GetInput(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		return userInput.nextLine(); //input changed to userInput @kosala
 	}	
 		
 		
-	private void output(Object object) {
+	private void PrintOutput(Object object) { //output() chaneged to PrintOutput() @kosala
 		System.out.println(object);
 	}
 	
 
 	public void display(Object object) {
-		output(object);
+		PrintOutput(object);//output() chaneged to PrintOutput() @kosala
 	}
 	
 	
